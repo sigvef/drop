@@ -350,15 +350,15 @@
       updateCountdowns();
 
       const canvas = document.getElementById('c');
-      const wrapper = document.getElementById('wrapper');
+      const wrapperElement = document.getElementById('wrapper');
       const ctx = canvas.getContext('2d');
 
       function resize() {
         const size = Math.min(window.innerWidth, window.innerHeight) / 1.618 | 0;
         canvas.width = size;
         canvas.height = size;
-        wrapper.style.width = size + 'px';
-        wrapper.style.height = size + 'px';
+        wrapperElement.style.width = size + 'px';
+        wrapperElement.style.height = size + 'px';
       }
 
       const baseCircleRadius = 0.665;
