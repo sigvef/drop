@@ -9,6 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script>
+    /* polyfill from
+     * https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach */
+    if (window.NodeList && !NodeList.prototype.forEach) {
+      NodeList.prototype.forEach = function (callback, argument) {
+        argument = argument || window;
+        for (var i = 0; i < this.length; i++) {
+          callback.call(argument, this[i], i, this);
+        }
+      };
+    }
+    </script>
     <style>
       html, body {
         height: 100%;
