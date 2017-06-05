@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf8>
+    <title>Drop [Album Release] by Sigveseb</title>
+    <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        font-family: 'Bubbler One', sans-serif;
+        font-size: 20px;
+        background: radial-gradient(
+          circle farthest-corner at 50% 50%,
+          #3b315a 0%,
+          #000 100%
+          ) no-repeat center center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      canvas {
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: white;
+      }
+
+      a:hover .track {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      a:hover .track.unreleased {
+        background: transparent;
+      }
+
+      a:active {
+        color: white;
+      }
+
+      .tracklist {
+        margin-left: 100px;
+        width: 400px;
+        color: white;
+      }
+
+      .tracklist .track {
+        height: 40px;
+        padding: 5px;
+        line-height: 40px;
+        padding-right: 15px;
+      }
+
+      .track.active {
+        color: #5ee6be;
+      }
+
+      .tracklist .track.unreleased {
+        opacity: 0.2;
+      }
+
+      .tracklist .number {
+        width: 20px;
+        float: left;
+        text-align: right;
+        padding-right: 10px;
+      }
+
+      .tracklist .title {
+        display: inline-block;
+      }
+
+      .tracklist .release {
+        float: right;
+        display: none;
+      }
+
+      .tracklist .length {
+        float: right;
+      }
+
+      .tracklist .track.unreleased .release {
+        display: block;
+      }
+
+      .tracklist .track.unreleased .length {
+        display: none;
+      }
+
+
+
+      #wrapper {
+        position: relative;
+      }
+
+      #wrapper > img {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
+
+      @keyframes spin {
+        from {transform:rotate(0deg);}
+        to {transform:rotate(360deg);}
+      }
+
+      .small-bars {
+        animation: spin 32s infinite linear; 
+      }
+      .large-bars {
+        animation: spin 16s infinite linear; 
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id=wrapper>
+      <img src=drop-grid.png alt></img>
+      <canvas id=c></canvas>
+      <img class=small-bars src=drop-small-green-bars.png alt></img>
+      <img class=large-bars src=drop-large-green-bars.png alt></img>
+    </div>
+
+    <div class=tracklist>
+      <a href="tracks/Sigveseb - Token.mp3">
+      <div class=track>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=number>1.</div>
+        <div class=title>Moon</div>
+        <div class=release>
+          <span class=moment data-time=2017-06-17T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Midnight.mp3">
+      <div class=track>
+        <div class=number>2.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Midnight</div>
+        <div class=release>
+          <span class=moment data-time=2017-06-12T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Twister.mp3">
+      <div class=track>
+        <div class=number>3.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Twister</div>
+        <div class=release>
+          <span class=moment data-time=2017-06-19T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Information Rider.mp3">
+      <div class=track>
+        <div class=number>4.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Information Rider</div>
+        <div class=release>
+          <span class=moment data-time=2017-07-10T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Street Ore.mp3">
+      <div class=track>
+        <div class=number>5.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Street Ore</div>
+        <div class=release>
+          <span class=moment data-time=2017-07-03T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Sunrise.mp3">
+      <div class=track>
+        <div class=number>6.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Sunrise</div>
+        <div class=release>
+          <span class=moment data-time=2017-06-26T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Token.mp3">
+      <div class=track>
+        <div class=number>7.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Token</div>
+        <div class=release>
+          <span class=moment data-time=2017-06-06T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Skydiver.mp3">
+      <div class=track>
+        <div class=number>8.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Skydiver</div>
+        <div class=release>
+          <span class=moment data-time=2017-07-17T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Firmodie.mp3">
+      <div class=track>
+        <div class=number>9.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Firmodie</div>
+        <div class=release>
+          <span class=moment data-time=2017-07-17T12:00Z></span>
+        </div>
+      </div>
+      </a>
+      <a href="tracks/Sigveseb - Grand Fox.mp3">
+      <div class=track>
+        <div class=number>10.</div>
+        <div class=length data-length="4:55">4:55</div>
+        <div class=title>Grand Fox</div>
+        <div class=release>
+          <span class=moment data-time=2017-07-17T12:00Z></span>
+        </div>
+      </div>
+      </a>
+    </div>
+
+
+    <script>
+
+      function zeropad(num, length) {
+        num = '' + num; 
+        while(num.length < length) {
+          num = '0' + num;
+        }
+        return num;
+      }
+
+      function toTimeRepresentation(seconds) {
+        const minutes = seconds / 60 | 0;
+        seconds = seconds % 60 | 0;
+        return `${minutes}:${zeropad(seconds, 2)}`
+      }
+
+      let currentTrack = null;
+      function currentTrackUpdateLoop() {
+        if(!currentTrack) {
+          return; 
+        }
+        const length = currentTrack.querySelector('.length');
+        audioElement.duration;
+        audioElement.currentTime;
+        length.innerText = `${
+          toTimeRepresentation(audioElement.currentTime)
+        }/${
+          toTimeRepresentation(audioElement.duration)
+        }`
+      }
+      setInterval(currentTrackUpdateLoop, 100);
+
+      function onSwitchTrack(track) {
+        document.querySelectorAll('.track').forEach(element => {
+          element.classList.remove('active');
+        });
+        if(track) {
+          track.classList.add('active');
+        }
+        document.querySelectorAll('.track .length').forEach(element => {
+          element.innerText = element.dataset.length;
+        });
+      }
+
+      const audioElement = new Audio();
+      const tracklinks = document.querySelectorAll('.tracklist a');
+      tracklinks.forEach(element => {
+        element.addEventListener('click', event => {
+          event.preventDefault();
+          const track = element.children[0];
+          if(track.classList.contains('unreleased')) {
+            return;
+          }
+          onSwitchTrack(track);
+          audioElement.src = element.href;
+          currentTrack = element.querySelector('.track');
+          audioElement.play();
+        });
+      });
+
+      const audioContext = new AudioContext();
+      const source = audioContext.createMediaElementSource(audioElement);
+      const gain = audioContext.createGain();
+      //gain.gain.value = 0.01;
+      const analyser = audioContext.createAnalyser(32);
+      const analyserData = new Uint8Array(analyser.frequencyBinCount);
+      source.connect(analyser);
+      source.connect(gain);
+      gain.connect(audioContext.destination);
+
+      function loop(t) {
+        requestAnimationFrame(loop);
+        analyser.getByteFrequencyData(analyserData);
+        draw(t);
+      }
+
+      function updateCountdowns() {
+        const moments = document.querySelectorAll('.moment');
+        moments.forEach(element => {
+          const time = moment(element.dataset.time);
+          if(moment().isAfter(time)) {
+            element.parentElement.parentElement.classList.remove('unreleased');
+          } else {
+            element.parentElement.parentElement.classList.add('unreleased');
+          }
+
+          if(moment().isBefore(time.clone().subtract(3, 'days'))) {
+            element.innerText = time.format('MMM Do');
+          } else {
+            element.innerText = time.fromNow();
+          }
+        });
+      }
+      setInterval(updateCountdowns, 500);
+      updateCountdowns();
+
+      const canvas = document.getElementById('c');
+      const wrapper = document.getElementById('wrapper');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        const size = Math.min(window.innerWidth, window.innerHeight) / 1.618 | 0;
+        canvas.width = size;
+        canvas.height = size;
+        wrapper.style.width = size + 'px';
+        wrapper.style.height = size + 'px';
+      }
+
+      const baseCircleRadius = 0.665;
+      const gradientAngle = 55 / 180 * Math.PI;
+      const gradientScale = 1.5;
+      const gradientX = gradientScale * baseCircleRadius * Math.cos(gradientAngle);
+      const gradientY = gradientScale * baseCircleRadius * Math.sin(gradientAngle);
+      const pinkGradient = ctx.createLinearGradient(
+          -gradientX,
+          -gradientY,
+          gradientX,
+          gradientY);
+      pinkGradient.addColorStop(0, '#ffc083');
+      pinkGradient.addColorStop(0.75, '#d565c2');
+      pinkGradient.addColorStop(1, '#b015f9');
+
+      const smallBarsImg = document.querySelector('.small-bars');
+      const dropTitleImg = document.createElement('img');
+      dropTitleImg.src = 'drop-title.png';
+
+      function draw(t) {
+        const lightBeat = 1+ 0.5 * analyserData[12] / 255;
+        smallBarsImg.style.transform = 'scale(${lightBeat})';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        const scaler = canvas.width / 2;
+        ctx.scale(scaler, scaler);
+        ctx.translate(1, 1);
+        let beat = baseCircleRadius * Math.min(
+            1,
+            (analyserData[3] + analyserData[12]) * 0.5 / 255);
+        if(!currentTrack) {
+          beat = baseCircleRadius;
+        }
+        ctx.beginPath();
+        ctx.ellipse(0, 0, beat, beat, 0, 0, Math.PI * 2);
+        ctx.fillStyle = pinkGradient;
+        ctx.fill();
+        ctx.restore();
+
+        const titleScale = canvas.width / dropTitleImg.width * 0.8 * beat;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.scale(titleScale, titleScale);
+        ctx.translate(canvas.width / 2 / titleScale,
+                      canvas.height / 2 / titleScale);
+        ctx.drawImage(dropTitleImg,
+                      -dropTitleImg.width / 2,
+                      -dropTitleImg.height / 2);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(dropTitleImg,
+                      -dropTitleImg.width / 2,
+                      -dropTitleImg.height / 2);
+        ctx.restore();
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      loop(0);
+    </script>
+  </body>
+</html>
+
