@@ -3,13 +3,13 @@
   <head>
     <meta charset=utf8>
     <title>Drop [Album Release] by Sigveseb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <style>
       html, body {
         height: 100%;
         width: 100%;
-        overflow: hidden;
         font-family: 'Bubbler One', sans-serif;
         font-size: 20px;
         background: radial-gradient(
@@ -18,8 +18,14 @@
           #000 100%
           ) no-repeat center center;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
+      }
+
+      body {
+        overflow: auto;
       }
 
       canvas {
@@ -50,6 +56,13 @@
         margin-left: 100px;
         width: 400px;
         color: white;
+      }
+
+      @media (max-width: 768px) {
+        .tracklist {
+            width: 100%;
+            margin: 0;
+        }
       }
 
       .tracklist .track {
