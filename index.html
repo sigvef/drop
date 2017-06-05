@@ -325,7 +325,8 @@
         });
       });
 
-      const audioContext = new AudioContext();
+      const audioContext = new (window.AudioContext ||
+                                window.webkitAudioContext)();
       const source = audioContext.createMediaElementSource(audioElement);
       const gain = audioContext.createGain();
       //gain.gain.value = 0.01;
