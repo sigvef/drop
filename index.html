@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -60,10 +61,40 @@
         position: absolute;
         padding-bottom: 15px;
         bottom: 0;
+        text-align: center;
       }
 
       footer a {
         color: #5ee6be;
+      }
+
+      .notify {
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+
+      .notify form {
+        display: inline-block;
+      }
+
+      .be-notified {
+        margin-bottom: 15px;
+      }
+
+      .notify input {
+        background: transparent;
+        border: 1px solid #5ee6be;
+        border-radius: 3px 0px 0px 3px;
+        padding: 5px 15px;
+        font-size: 20px;
+        color: #ccc;
+        font-weight: normal;
+        font-family: 'Bubbler One', sans-serif;
+      }
+
+      .notify input[type=submit] {
+        color: #5ee6be;
+        border-radius: 0px 3px 3px 0px;
       }
 
       a {
@@ -290,6 +321,49 @@
     </div>
 
     <footer>
+
+      <!-- Begin MailChimp Signup Form -->
+      <div id="mc_embed_signup" class=notify>
+        <form
+          action="//arkt.us16.list-manage.com/subscribe/post?u=69e4f3d10dd80f0d8e36e3ba8&amp;id=24603a7f68"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="validate"
+          target="_blank"
+          novalidate
+          >
+          <div id="mc_embed_signup_scroll">
+            <input
+            type="email"
+            value=""
+            name="EMAIL"
+            class="email"
+            id="mce-EMAIL"
+            placeholder="email address"
+            required
+            ><div
+              style="position: absolute; left: -5000px;"
+              aria-hidden="true"
+              ><input
+              type="text"
+              name="b_69e4f3d10dd80f0d8e36e3ba8_24603a7f68"
+              tabindex="-1"
+              value=""
+              ></div><input
+              style="border-left: none"
+              type="submit"
+              value="Subscribe"
+              name="subscribe"
+              id="mc-embedded-subscribe"
+              class="button">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--End mc_embed_signup-->
+
+      //
       <a target=_blank href=https://soundcloud.com/sigveseb>SoundCloud</a>
       //
       <a target=_blank href=https://open.spotify.com/artist/2IoZo8gsBEHlLO2KTnCto1>Spotify</a>
@@ -483,6 +557,7 @@
           break;
         }
       }
+
     </script>
 
   </body>
