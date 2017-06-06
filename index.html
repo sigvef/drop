@@ -397,7 +397,7 @@
             element.parentElement.parentElement.classList.add('unreleased');
           }
 
-          if(moment().isBefore(time.clone().subtract(3, 'days'))) {
+          if(moment().isBefore(time.clone().subtract(7, 'days'))) {
             element.innerText = time.format('MMM Do');
           } else {
             element.innerText = time.fromNow();
