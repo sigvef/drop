@@ -372,8 +372,7 @@
                                 window.webkitAudioContext)();
       const source = audioContext.createMediaElementSource(audioElement);
       const gain = audioContext.createGain();
-      //gain.gain.value = 0.01;
-      const analyser = audioContext.createAnalyser(32);
+      const analyser = audioContext.createAnalyser();
       const analyserData = new Uint8Array(analyser.frequencyBinCount);
       source.connect(analyser);
       source.connect(gain);
@@ -438,8 +437,6 @@
       dropTitleImg.src = 'drop-title.png';
 
       function draw(t) {
-        const lightBeat = 1+ 0.5 * analyserData[12] / 255;
-        smallBarsImg.style.transform = 'scale(${lightBeat})';
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
         const scaler = canvas.width / 2;
