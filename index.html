@@ -20,15 +20,6 @@
   ga('create', 'UA-25881803-1', 'auto');
     ga('send', 'pageview');
 
-      for(let track of document.querySelectorAll('.track')) {
-        if(!track.classList.contains('unreleased')) {
-          onSwitchTrack(track);
-          audioElement.src = track.parentElement.href;
-          currentTrack = track;
-          audioElement.play();
-          break;
-        }
-      }
     </script>
     <script>
     /* polyfill from
@@ -485,6 +476,16 @@
       window.addEventListener('resize', resize);
       resize();
       loop(0);
+
+      for(let track of document.querySelectorAll('.track')) {
+        if(!track.classList.contains('unreleased')) {
+          onSwitchTrack(track);
+          audioElement.src = track.parentElement.href;
+          currentTrack = track;
+          audioElement.play();
+          break;
+        }
+      }
     </script>
 
   </body>
