@@ -12,6 +12,25 @@
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25881803-1', 'auto');
+    ga('send', 'pageview');
+
+      for(let track of document.querySelectorAll('.track')) {
+        if(!track.classList.contains('unreleased')) {
+          onSwitchTrack(track);
+          audioElement.src = track.parentElement.href;
+          currentTrack = track;
+          audioElement.play();
+          break;
+        }
+      }
+    </script>
+    <script>
     /* polyfill from
      * https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach */
     if (window.NodeList && !NodeList.prototype.forEach) {
@@ -318,6 +337,13 @@
       setInterval(currentTrackUpdateLoop, 100);
 
       function onSwitchTrack(track) {
+        ga(
+          'send',
+          'event',
+          'track',
+          'switch',
+          track.parentElement.href);
+
         document.querySelectorAll('.track').forEach(element => {
           element.classList.remove('active');
         });
@@ -461,25 +487,6 @@
       loop(0);
     </script>
 
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-25881803-1', 'auto');
-    ga('send', 'pageview');
-
-      for(let track of document.querySelectorAll('.track')) {
-        if(!track.classList.contains('unreleased')) {
-          onSwitchTrack(track);
-          audioElement.src = track.parentElement.href;
-          currentTrack = track;
-          audioElement.play();
-          break;
-        }
-      }
-    </script>
   </body>
 </html>
 
