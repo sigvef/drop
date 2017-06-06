@@ -333,6 +333,12 @@
           if(track.classList.contains('unreleased')) {
             return;
           }
+
+          if(currentTrack == track) {
+            audioElement.paused ? audioElement.play() : audioElement.pause();
+            return;
+          }
+
           onSwitchTrack(track);
           audioElement.src = element.href;
           currentTrack = element.querySelector('.track');
@@ -353,7 +359,9 @@
 
       function loop(t) {
         requestAnimationFrame(loop);
-        analyser.getByteFrequencyData(analyserData);
+        if(!audioElement.paused) {
+          analyser.getByteFrequencyData(analyserData);
+        }
         draw(t);
       }
 
